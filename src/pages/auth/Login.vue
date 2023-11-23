@@ -2,9 +2,9 @@
   <q-page class="flex flex-center">
     <q-page class="window-height window-width row justify-center items-center">
       <div class="row">
-        <q-card class="shadow-5">
+        <q-card flat bordered>
             <q-card-section>
-              <q-img src="icons/pancaduta.jpg" initial-ratio="1" fit="fill" class="text-center"></q-img>
+              <q-img src="images/bataxdev.jpg" initial-ratio="1" fit="fill" class="text-center"></q-img>
             </q-card-section>
             <q-card-section>
               <q-form class="q-px-sm">
@@ -27,6 +27,7 @@
                   v-model="password"
                   :type="passwordFieldType"
                   lazy-rules
+                  @keyup.enter="submit"
                   :rules="[
                     val => (val && val.length > 0) || 'Please insert password'
                   ]"
@@ -53,6 +54,7 @@
                 @click="submit"
                 class="full-width"
                 label="Login"
+                :loading="loading"
               />
             </q-card-actions>
           </q-card>
@@ -98,7 +100,6 @@ export default defineComponent({
             password: this.password
           }
           await this.actionLogin(payload).then((data) => {
-            console.log(data)
             if(data.data != null){
               this.$router.push('/')
             } else {
@@ -109,6 +110,7 @@ export default defineComponent({
                 timeout: 1000
               })
             }
+            this.loading = false
           })
         }catch(err){
           localStorage.removeItem('token')

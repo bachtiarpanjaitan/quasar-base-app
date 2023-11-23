@@ -15,10 +15,7 @@ const routes = [
     meta: { middlewares: [auth] },
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '/schedules', component: () => import('pages/schedule/Index.vue')},
-      { path: '/shifts', component: () => import('pages/shift/Index.vue')},
-      { path: '/projects', component: () => import('pages/project/Index.vue')},
-      { path: '/attendances', component: () => import('pages/attendance/Index.vue')}
+      { path: '/projects', component: () => import('pages/project/Index.vue')}
     ]
   },
   

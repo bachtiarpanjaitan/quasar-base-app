@@ -25,6 +25,7 @@ module.exports = configure(function (ctx) {
     boot: [
       'i18n',
       'axios',
+      'apexcharts'
     ],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
@@ -51,8 +52,10 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       env: {
-        API_URL: ctx.dev ? 'http://localhost:8000/api/v1' : 'https://bataxdev.comt/api/v1',
-        VUE_ROUTER_MODE: 'history'
+        API_URL: ctx.dev ? 'http://localhost:8000/api/v1' : 'https://yourdomain.com/api/v1',
+        API_BASE_URL: ctx.dev ? 'http://localhost:8000' : 'https://yourdomain.com',
+        VUE_ROUTER_MODE: 'history',
+        GOOGLEMAP_KEY: 'AIzaSyBfRSR2jye7zflE90y8ee3x5RyEzkYIT3cs'
       },
       // transpile: false,
       // publicPath: '/',
@@ -105,7 +108,8 @@ module.exports = configure(function (ctx) {
 
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Dialog'
       ]
     },
 
